@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/sorting-visualiser/",
+  base: "/sort-algorithm-visualiser/",
   build: {
     outDir: "docs",
   },
