@@ -1,15 +1,39 @@
-export const canvas = document.querySelector("#canvas");
-export const ctx = canvas.getContext("2d");
+import { formatValue } from "./utils";
 
-export function updateDimensions() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-}
+export class Canvas {
+  #canvas;
+  #ctx;
 
-export function clear() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+  constructor(canvas) {
+    if (!(canvas instanceof HTMLCanvasElement)) {
+      throw new Error("Not a canvas element");
+    }
 
-class Canvas {
-  constructor(canvasElem) {}
+    this.#canvas = canvas;
+    this.#ctx = canvas.getContext("2d");
+  }
+
+  clear() {
+    this.#ctx.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
+  }
+
+  updateDimensions() {
+    this.#canvas.width = innerWidth;
+    this.#canvas.height = innerHeight;
+  }
+
+  drawData(data) {
+    this.clear();
+    this.#ctx.fillStyle = "#f00";
+
+    const w = innerWidth / data.length;
+    let x = 0;
+
+    for (const value of data) {
+      const h = formatValue(value, this.#canvas.height);
+      const y = this.#canvas.height - h;
+      this.#ctx.fillRect(x, y, w, h);
+      x += w;
+    }
+  }
 }
