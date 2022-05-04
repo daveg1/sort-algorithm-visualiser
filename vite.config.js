@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/image-cropper/",
+  base: "/sorting-visualiser/",
   build: {
     outDir: "docs",
   },
