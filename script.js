@@ -1,6 +1,6 @@
-import { randomArray } from "./src/utils.js";
-import { Canvas } from "./src/canvas.js";
-import { BubbleSort } from "./src/sort/BubbleSort.js";
+import { randomArray } from "./js/utils.js";
+import { Canvas } from "./js/canvas.js";
+import { BubbleSort } from "./js/sort/BubbleSort.js";
 
 const canvasElem = document.querySelector("#canvas");
 const sortButton = document.querySelector("#sort-button");
