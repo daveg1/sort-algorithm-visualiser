@@ -1,4 +1,4 @@
-import { BubbleSort } from "./src/sort/bubble.js";
+import { BubbleSort } from "./src/sort/BubbleSort";
 
 const bubbleSort = new BubbleSort();
 

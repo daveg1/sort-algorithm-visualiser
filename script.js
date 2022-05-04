@@ -1,6 +1,6 @@
 import { randomArray, formatValue } from "./src/utils.js";
 import { canvas, ctx, clear, updateDimensions } from "./src/canvas.js";
-import { BubbleSort } from "./src/sort/bubble.js";
+import { BubbleSort } from "./src/sort/BubbleSort.js";
 
 window.addEventListener("resize", updateDimensions);
 
