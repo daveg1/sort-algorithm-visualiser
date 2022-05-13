@@ -20,14 +20,13 @@ function updateCanvas() {
     return
   }
 
-  console.debug('hello')
+  console.debug('drawing')
   canvas.drawData(drawQueue.shift() as number[])
 }
 
 sortButton?.addEventListener('click', (_) => {
   bubbleSort.addEventListener('sort', (e) => {
     const event = (e as SortEvent).detail as number[]
-
     drawQueue.push(event)
   })
 
