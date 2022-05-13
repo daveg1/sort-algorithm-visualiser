@@ -10,7 +10,7 @@ export class BubbleSort extends Sort {
           array[j + 1] = array[j]
           array[j] = temp
           // Emit whenever a change is made
-          this.emit(array)
+          this.emitSort(array)
         }
       }
     }
