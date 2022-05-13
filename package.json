@@ -5,21 +5,22 @@
   "main": "script.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daveg1/sort-algorithm-visualiser.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "daveg1",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/daveg1/sort-algorithm-visualiser/issues"
   },
   "homepage": "https://github.com/daveg1/sort-algorithm-visualiser#readme",
   "devDependencies": {
-    "vite": "^2.9.8"
+    "typescript": "^4.6.4",
+    "vite": "^2.9.9"
   }
 }
