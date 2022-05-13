@@ -1,6 +1,6 @@
-import { SortEvent } from '../classes/SortEvent'
+import { Sort } from './Sort'
 
-export class BubbleSort extends EventTarget {
+export class BubbleSort extends Sort {
   sort(array: number[]) {
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array.length - 1; j++) {
@@ -10,7 +10,7 @@ export class BubbleSort extends EventTarget {
           array[j + 1] = array[j]
           array[j] = temp
           // Emit whenever a change is made
-          this.dispatchEvent(new SortEvent(array))
+          this.emit(array)
         }
       }
     }
