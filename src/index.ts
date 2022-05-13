@@ -13,7 +13,10 @@ const bubbleSort = new BubbleSort()
 const drawQueue: number[][] = []
 
 const data = randomArray(100, 0, 100)
+let opsCount = 0
+
 canvas.drawData(data)
+updateStats()
 
 function updateCanvas() {
   requestAnimationFrame(updateCanvas)
@@ -24,6 +27,17 @@ function updateCanvas() {
 
   console.debug('drawing')
   canvas.drawData(drawQueue.shift() as number[])
+
+  opsCount++
+  updateStats()
+}
+
+function updateStats() {
+  const sizeSpan = document.querySelector('#size')!
+  const opsSpan = document.querySelector('#ops')!
+
+  sizeSpan.textContent = String(data.length)
+  opsSpan.textContent = String(opsCount)
 }
 
 sortButton?.addEventListener('click', (_) => {
