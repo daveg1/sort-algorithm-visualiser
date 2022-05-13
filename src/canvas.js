@@ -17,9 +17,9 @@ export class Canvas {
     this.#ctx.clearRect(0, 0, this.#canvas.width, this.#canvas.height)
   }
 
-  updateDimensions() {
-    this.#canvas.width = innerWidth
-    this.#canvas.height = innerHeight
+  updateDimensions(width, height) {
+    this.#canvas.width = width
+    this.#canvas.height = height
   }
 
   drawData(data) {

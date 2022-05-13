@@ -9,10 +9,8 @@ const canvas = new Canvas(canvasElem)
 const bubbleSort = new BubbleSort()
 const updateQueue = []
 
-window.addEventListener('resize', canvas.updateDimensions.bind(canvas))
-
 const data = randomArray(100, 0, 100)
-canvas.updateDimensions()
+canvas.updateDimensions(750, 500)
 canvas.drawData(data)
 
 function updateCanvas() {
