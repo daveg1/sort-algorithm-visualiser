@@ -6,16 +6,14 @@ export class Canvas {
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas
+    this.canvas.width = 750
+    this.canvas.height = 500
+
     this.ctx = canvas.getContext('2d')
   }
 
   clear() {
     this.ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height)
-  }
-
-  updateDimensions(width: number, height: number) {
-    this.canvas.width = width
-    this.canvas.height = height
   }
 
   drawData(data: number[]) {

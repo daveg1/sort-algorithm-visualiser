@@ -11,7 +11,6 @@ const bubbleSort = new BubbleSort()
 const updateQueue: any[] = []
 
 const data = randomArray(100, 0, 100)
-canvas.updateDimensions(750, 500)
 canvas.drawData(data)
 
 function updateCanvas() {
