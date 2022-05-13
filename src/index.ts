@@ -4,13 +4,14 @@ import { randomArray } from './utils.js'
 import { Canvas } from './classes/Canvas.js'
 import { BubbleSort } from './sort/BubbleSort.js'
 import { SortEvent } from './classes/SortEvent.js'
+import { DrawQueue } from './classes/DrawQueue'
 
 const canvasElem = document.querySelector('#canvas') as HTMLCanvasElement
 const sortButton = document.querySelector('#sort-button')
 
 const canvas = new Canvas(canvasElem)
 const bubbleSort = new BubbleSort()
-const drawQueue: number[][] = []
+const drawQueue = new DrawQueue()
 
 const data = randomArray(100, 0, 100)
 let opsCount = 0
@@ -26,7 +27,7 @@ function updateCanvas() {
   }
 
   console.debug('drawing')
-  canvas.drawData(drawQueue.shift() as number[])
+  canvas.drawData(drawQueue.next())
 
   opsCount++
   updateStats()
@@ -43,7 +44,7 @@ function updateStats() {
 sortButton?.addEventListener('click', (_) => {
   bubbleSort.addEventListener('sort', (e) => {
     const event = (e as SortEvent).detail as number[]
-    drawQueue.push(event)
+    drawQueue.append(event)
   })
 
   bubbleSort.sort(data)
