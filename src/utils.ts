@@ -1,10 +1,10 @@
-export function randomArray(length, start = 0, end = 1) {
+export function randomArray(length: number, start = 0, end = 1) {
   return Array.from({ length }).map(() => {
     const random = Math.floor(Math.random() * end)
     return Math.max(start, Math.min(random, end))
   })
 }
 
-export function formatValue(value, max) {
+export function formatValue(value: number, max: number) {
   return Math.floor(max * (value / 100))
 }

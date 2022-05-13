@@ -2,12 +2,12 @@ import { randomArray } from './utils.js'
 import { Canvas } from './canvas.js'
 import { BubbleSort } from './sort/BubbleSort.js'
 
-const canvasElem = document.querySelector('#canvas')
+const canvasElem = document.querySelector('#canvas') as HTMLCanvasElement
 const sortButton = document.querySelector('#sort-button')
 
 const canvas = new Canvas(canvasElem)
 const bubbleSort = new BubbleSort()
-const updateQueue = []
+const updateQueue: any[] = []
 
 const data = randomArray(100, 0, 100)
 canvas.updateDimensions(750, 500)
@@ -24,9 +24,9 @@ function updateCanvas() {
   canvas.drawData(updateQueue.shift())
 }
 
-sortButton.addEventListener('click', (e) => {
+sortButton?.addEventListener('click', (_) => {
   bubbleSort.addEventListener('sort', (e) => {
-    updateQueue.push(e.detail)
+    updateQueue.push(e.detail as number[])
   })
 
   bubbleSort.sort(data)
