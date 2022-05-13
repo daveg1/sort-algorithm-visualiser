@@ -1,3 +1,5 @@
+import { SortEvent } from './SortEvent'
+
 export class BubbleSort extends EventTarget {
   sort(array: number[]) {
     for (let i = 0; i < array.length; i++) {
@@ -8,7 +10,7 @@ export class BubbleSort extends EventTarget {
           array[j + 1] = array[j]
           array[j] = temp
           // Emit whenever a change is made
-          this.dispatchEvent(new CustomEvent('sort', { detail: [...array] }))
+          this.dispatchEvent(new SortEvent(array))
         }
       }
     }
