@@ -26,7 +26,7 @@ export class Canvas {
     this.clear()
     this.#ctx.fillStyle = '#f00'
 
-    const w = innerWidth / data.length
+    const w = this.#canvas.width / data.length
     let x = 0
 
     for (const value of data) {
