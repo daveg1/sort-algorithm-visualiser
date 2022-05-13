@@ -1,7 +1,7 @@
 import { randomArray } from './utils.js'
-import { Canvas } from './canvas.js'
+import { Canvas } from './classes/Canvas.js'
 import { BubbleSort } from './sort/BubbleSort.js'
-import { SortEvent } from './sort/SortEvent.js'
+import { SortEvent } from './classes/SortEvent.js'
 
 const canvasElem = document.querySelector('#canvas') as HTMLCanvasElement
 const sortButton = document.querySelector('#sort-button')

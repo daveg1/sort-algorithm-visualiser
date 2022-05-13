@@ -1,4 +1,4 @@
-import { formatValue } from './utils'
+import { formatValue } from '../utils'
 
 export class Canvas {
   private canvas: HTMLCanvasElement

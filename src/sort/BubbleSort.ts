@@ -1,4 +1,4 @@
-import { SortEvent } from './SortEvent'
+import { SortEvent } from '../classes/SortEvent'
 
 export class BubbleSort extends EventTarget {
   sort(array: number[]) {
