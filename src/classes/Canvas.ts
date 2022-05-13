@@ -2,27 +2,22 @@ import { formatValue } from '../utils'
 
 export class Canvas {
   private canvas: HTMLCanvasElement
-  private ctx: CanvasRenderingContext2D | null
+  private ctx: CanvasRenderingContext2D
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas
     this.canvas.width = 750
     this.canvas.height = 500
-
-    this.ctx = canvas.getContext('2d')
+    this.ctx = canvas.getContext('2d')!
   }
 
   clear() {
-    this.ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   }
 
   drawData(data: number[]) {
-    if (!this.ctx) {
-      return
-    }
-
     this.clear()
-    this.ctx.fillStyle = '#f00'
+    this.ctx.fillStyle = window.getComputedStyle(this.canvas).color ?? 'red'
 
     const w = this.canvas.width / data.length
     let x = 0

@@ -1,3 +1,5 @@
+import './index.css'
+
 import { randomArray } from './utils.js'
 import { Canvas } from './classes/Canvas.js'
 import { BubbleSort } from './sort/BubbleSort.js'
