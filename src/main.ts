@@ -8,7 +8,7 @@ const sortButton = document.querySelector('#sort-button')
 
 const canvas = new Canvas(canvasElem)
 const bubbleSort = new BubbleSort()
-const updateQueue: any[] = []
+const updateQueue: number[][] = []
 
 const data = randomArray(100, 0, 100)
 canvas.drawData(data)
@@ -16,17 +16,19 @@ canvas.drawData(data)
 function updateCanvas() {
   requestAnimationFrame(updateCanvas)
 
-  if (!updateQueue.length) {
+  if (updateQueue.length <= 0) {
     return
   }
 
   console.debug('hello')
-  canvas.drawData(updateQueue.shift())
+  canvas.drawData(updateQueue.shift() as number[])
 }
 
 sortButton?.addEventListener('click', (_) => {
   bubbleSort.addEventListener('sort', (e) => {
-    updateQueue.push((e as SortEvent).detail)
+    const event = (e as SortEvent).detail as number[]
+
+    updateQueue.push(event)
   })
 
   bubbleSort.sort(data)
