@@ -26,7 +26,7 @@ function updateCanvas() {
 
 sortButton?.addEventListener('click', (_) => {
   bubbleSort.addEventListener('sort', (e) => {
-    updateQueue.push(e.detail as number[])
+    updateQueue.push((e as CustomEvent).detail as number[])
   })
 
   bubbleSort.sort(data)
