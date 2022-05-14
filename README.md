@@ -11,3 +11,7 @@ Visualises the step-by-step process of a sorting algorithm sorting a numerical d
 ### Ongoing
 
 - Document code
+
+## References
+
+- [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/sorting) by Oleksii Trekhleb
