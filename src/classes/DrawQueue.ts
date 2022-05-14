@@ -1,12 +1,20 @@
+interface IterableItem {
+  value: number[]
+  done: boolean
+}
+
 export class DrawQueue {
   constructor(private queue: number[][] = []) {}
 
-  get length(): number {
-    return this.queue.length
+  [Symbol.iterator]() {
+    return this
   }
 
-  next(): number[] {
-    return this.queue.shift()!
+  next(): IterableItem {
+    const value = this.queue.shift()!
+    const done = !this.queue.length
+
+    return { value, done }
   }
 
   append(item: number[]): void {

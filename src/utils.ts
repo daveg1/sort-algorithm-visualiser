@@ -8,3 +8,7 @@ export function randomArray(length: number, start = 0, end = 1) {
 export function formatValue(value: number, max: number) {
   return Math.floor(max * (value / 100))
 }
+
+export function pause(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}

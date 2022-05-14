@@ -1,17 +1,19 @@
 import './index.css'
 
-import { randomArray } from './utils.js'
+import { pause, randomArray } from './utils.js'
 import { Canvas } from './classes/Canvas.js'
-import { BubbleSort } from './sort/BubbleSort.js'
 import { SortEvent } from './classes/SortEvent.js'
 import { DrawQueue } from './classes/DrawQueue'
+import { BubbleSort } from './sort/BubbleSort.js'
+import { InsertionSort } from './sort/InsertionSort'
 
 const canvasElem = document.querySelector('#canvas') as HTMLCanvasElement
 const sortButton = document.querySelector('#sort-button')
 
 const canvas = new Canvas(canvasElem)
-const bubbleSort = new BubbleSort()
+const sortingAlgo = new InsertionSort()
 const drawQueue = new DrawQueue()
+const DELAY = 10
 
 const data = randomArray(100, 0, 100)
 let opsCount = 0
@@ -19,18 +21,16 @@ let opsCount = 0
 canvas.drawData(data)
 updateStats()
 
-function updateCanvas() {
-  requestAnimationFrame(updateCanvas)
-
-  if (drawQueue.length <= 0) {
-    return
+async function updateCanvas() {
+  for (const state of drawQueue) {
+    console.debug('drawing')
+    canvas.drawData(state)
+    opsCount++
+    updateStats()
+    await pause(DELAY)
   }
-
-  console.debug('drawing')
-  canvas.drawData(drawQueue.next())
-
-  opsCount++
-  updateStats()
+  console.log('done')
+  canvas.drawData(data)
 }
 
 function updateStats() {
@@ -42,11 +42,12 @@ function updateStats() {
 }
 
 sortButton?.addEventListener('click', (_) => {
-  bubbleSort.addEventListener('sort', (e) => {
+  sortingAlgo.addEventListener('sort', (e) => {
     const event = (e as SortEvent).detail as number[]
     drawQueue.append(event)
   })
 
-  bubbleSort.sort(data)
+  const sortedData = sortingAlgo.sort(data)
+  console.log(sortedData)
   updateCanvas()
 })
