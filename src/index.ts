@@ -6,14 +6,32 @@ import { SortEvent } from './classes/SortEvent.js'
 import { DrawQueue } from './classes/DrawQueue'
 import { BubbleSort } from './sort/BubbleSort.js'
 import { InsertionSort } from './sort/InsertionSort'
+import { Sort } from './sort/Sort'
 
 const canvasElem = document.querySelector('#canvas') as HTMLCanvasElement
-const sortButton = document.querySelector('#sort-button')
+const sortButton = document.querySelector('#sort-button') as HTMLButtonElement
+const algorithmSelect = document.querySelector('#algorithm-select') as HTMLSelectElement
 
 const canvas = new Canvas(canvasElem)
-const sortingAlgo = new InsertionSort()
 const drawQueue = new DrawQueue()
 const DELAY = 10
+
+const algorithms: Map<string, Sort> = new Map()
+algorithms.set('bubble', new BubbleSort())
+algorithms.set('insertion', new InsertionSort())
+
+let sortingAlgo = algorithms.get('bubble')!
+
+algorithms.forEach((v, k) => {
+  const option = document.createElement('option')
+  option.value = k
+  option.textContent = `${k} sort`
+  algorithmSelect?.append(option)
+})
+
+algorithmSelect.addEventListener('change', (e) => {
+  sortingAlgo = algorithms.get(algorithmSelect.value)!
+})
 
 const data = randomArray(100, 0, 100)
 let opsCount = 0
@@ -41,13 +59,22 @@ function updateStats() {
   opsSpan.textContent = String(opsCount)
 }
 
+let sorting = false
+
 sortButton?.addEventListener('click', (_) => {
+  if (sorting) {
+    return
+  }
+
   sortingAlgo.addEventListener('sort', (e) => {
     const event = (e as SortEvent).detail as number[]
     drawQueue.append(event)
   })
 
+  sorting = true
   const sortedData = sortingAlgo.sort(data)
   console.log(sortedData)
-  updateCanvas()
+  updateCanvas().then(() => {
+    sorting = false
+  })
 })
