@@ -22,6 +22,7 @@ algorithms.set('insertion', new InsertionSort())
 
 let sortingAlgo = algorithms.get('bubble')!
 
+// @ts-ignore
 algorithms.forEach((v, k) => {
   const option = document.createElement('option')
   option.value = k
@@ -29,6 +30,7 @@ algorithms.forEach((v, k) => {
   algorithmSelect?.append(option)
 })
 
+// @ts-ignore
 algorithmSelect.addEventListener('change', (e) => {
   sortingAlgo = algorithms.get(algorithmSelect.value)!
 })
