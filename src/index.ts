@@ -9,6 +9,7 @@ import { InsertionSort } from './sort/InsertionSort'
 import { Sort } from './sort/Sort'
 
 const canvasElem = document.querySelector('#canvas') as HTMLCanvasElement
+const resetButton = document.querySelector('#reset-button') as HTMLButtonElement
 const sortButton = document.querySelector('#sort-button') as HTMLButtonElement
 const algorithmSelect = document.querySelector('#algorithm-select') as HTMLSelectElement
 
@@ -35,7 +36,7 @@ algorithmSelect.addEventListener('change', (e) => {
   sortingAlgo = algorithms.get(algorithmSelect.value)!
 })
 
-const data = randomArray(100, 0, 100)
+let data = randomArray(100, 0, 100)
 let opsCount = 0
 
 canvas.drawData(data)
@@ -79,4 +80,12 @@ sortButton?.addEventListener('click', (_) => {
   updateCanvas().then(() => {
     sorting = false
   })
+})
+
+// @ts-ignore
+resetButton.addEventListener('click', (e) => {
+  opsCount = 0
+  updateStats()
+  data = randomArray(100, 0, 100)
+  canvas.drawData(data)
 })
