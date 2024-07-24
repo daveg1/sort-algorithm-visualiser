@@ -1,23 +1,23 @@
 interface IterableItem {
-  value: number[]
-  done: boolean
+  value: number[];
+  done: boolean;
 }
 
 export class DrawQueue {
   constructor(private queue: number[][] = []) {}
 
   [Symbol.iterator]() {
-    return this
+    return this;
   }
 
   next(): IterableItem {
-    const value = this.queue.shift()!
-    const done = !this.queue.length
+    const value = this.queue.shift()!;
+    const done = !this.queue.length;
 
-    return { value, done }
+    return { value, done };
   }
 
   append(item: number[]): void {
-    this.queue.push(item)
+    this.queue.push(item);
   }
 }
