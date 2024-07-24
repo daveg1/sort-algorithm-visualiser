@@ -5,63 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sorting Visualiser</title>
-
-    <script
-      type="module"
-      crossorigin
-      src="/sort-algorithm-visualiser/assets/index.e896ad12.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="/sort-algorithm-visualiser/assets/index.68950e4c.css"
-    />
+    
+    <script type="module" crossorigin src="/sort-algorithm-visualiser/assets/index.3f8c4661.js"></script>
+    <link rel="stylesheet" href="/sort-algorithm-visualiser/assets/index.af34a429.css">
   </head>
-  <body class="bg-slate-100 dark:bg-slate-900">
-    <div class="mx-auto max-w-max py-8">
-      <h1 class="text-2xl">Sorting Algorithm Visualiser</h1>
-      <canvas
-        id="canvas"
-        class="my-4 border bg-white p-4 text-blue-500 shadow-sm dark:bg-slate-900 dark:text-blue-400"
-      ></canvas>
-      <div class="grid w-full grid-cols-2 gap-4">
-        <div class="grow rounded-md bg-white p-4">
-          <h2 class="text-lg font-semibold">Choose Algorithm</h2>
+  <body class="flex bg-slate-100 px-32 py-16 dark:bg-slate-900">
+    <aside
+      class="mt-10 flex h-full w-[350px] flex-col gap-8 justify-self-center rounded-lg border bg-white p-8 shadow-sm"
+    >
+      <header>
+        <h1 class="text-xl">Sort algorithm visualiser</h1>
+      </header>
+
+      <main class="flex flex-col gap-6">
+        <section class="flex flex-col">
+          <label for="algorithm-select" class="cursor-pointer pb-2 font-medium"
+            >Algorithm</label
+          >
+
           <select
             id="algorithm-select"
-            class="mt-3 block w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            class="h-10 cursor-pointer rounded border-r-4 border-r-transparent px-2 outline outline-1 outline-gray-300 hover:shadow-md hover:outline-gray-500 focus:shadow-sm focus:outline-indigo-400"
           ></select>
-          <div class="mt-3 flex justify-end gap-2">
-            <button
-              type="button"
-              id="reset-button"
-              class="h-10 cursor-pointer rounded-md bg-emerald-500 px-5 font-semibold text-white hover:bg-emerald-600"
-            >
-              Reset
-            </button>
-            <button
-              type="button"
-              id="sort-button"
-              class="h-10 cursor-pointer rounded-md bg-emerald-500 px-5 font-semibold text-white hover:bg-emerald-600"
-            >
-              Sort
-            </button>
-          </div>
-        </div>
+        </section>
 
-        <div class="grow rounded-md bg-white p-4">
-          <h2 class="text-lg font-semibold">Statistics</h2>
-          <ul class="mt-2 flex flex-col gap-2">
-            <li>
-              <span>Size:</span>
-              <span id="size"></span>
-            </li>
-            <li>
-              <span>Ops:</span>
-              <span id="ops"></span>
-            </li>
-          </ul>
+        <section class="flex flex-col">
+          <label for="data-size" class="cursor-pointer pb-2 font-medium"
+            >Size</label
+          >
+
+          <input
+            id="data-size"
+            class="border-offset-1 h-10 cursor-pointer rounded border border-gray-300 bg-black/5 px-2 outline-none hover:shadow-sm"
+            type="number"
+            value="100"
+            readonly
+          />
+        </section>
+
+        <div class="flex justify-end gap-2">
+          <button
+            type="button"
+            id="reset-button"
+            class="h-9 cursor-pointer rounded px-5 font-semibold text-slate-600 transition-opacity hover:opacity-50"
+          >
+            Reset
+          </button>
+
+          <button
+            type="button"
+            id="sort-button"
+            class="h-9 cursor-pointer rounded-full bg-emerald-500 px-5 font-semibold text-white transition-colors hover:bg-emerald-500/80 active:bg-emerald-600/90"
+          >
+            Sort
+          </button>
         </div>
-      </div>
-    </div>
+      </main>
+    </aside>
+
+    <main class="mx-auto flex flex-col gap-4">
+      <aside class="flex h-6 gap-4">
+        <span>Size: <span id="size"></span></span>
+        <span>Ops: <span id="ops"></span></span>
+      </aside>
+
+      <canvas
+        id="canvas"
+        class="rounded-xl border bg-white p-4 text-blue-500 shadow-sm dark:bg-slate-900 dark:text-blue-400"
+        height="500"
+        width="1000"
+      ></canvas>
+    </main>
   </body>
 </html>
