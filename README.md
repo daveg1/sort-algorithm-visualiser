@@ -4,14 +4,10 @@ Visualises the step-by-step process of a sorting algorithm sorting a numerical d
 
 ## Todo
 
-- Implement more algorithms
-- Add dropdown to select algorithm
-- Customise dataset size and range
-- Add table of historical runs
-
-### Ongoing
-
-- Document code
+- [x] Add dropdown to select algorithm
+- [ ] Implement more algorithms
+- [ ] Form to customise dataset size and range
+- [ ] Store history of runs
 
 ## References
 
