@@ -7,32 +7,28 @@
     <title>Sorting Visualiser</title>
     <script src="./src/index.ts" type="module"></script>
   </head>
-  <body class="bg-slate-100 dark:bg-slate-900">
+  <body class="flex bg-slate-100 px-32 py-16 dark:bg-slate-900">
     <aside
-      class="absolute inset-y-0 left-0 flex w-[350px] flex-col gap-8 bg-white p-8"
+      class="mt-10 flex h-full w-[350px] flex-col gap-8 justify-self-center rounded-lg border bg-white p-8 shadow-sm"
     >
       <header>
-        <h1 class="text-2xl">Sort algorithm visualiser</h1>
+        <h1 class="text-xl">Sort algorithm visualiser</h1>
       </header>
 
       <main class="flex flex-col gap-6">
         <section class="flex flex-col">
-          <label
-            for="algorithm-select"
-            class="cursor-pointer pb-2 text-lg font-semibold"
+          <label for="algorithm-select" class="cursor-pointer pb-2 font-medium"
             >Algorithm</label
           >
 
           <select
             id="algorithm-select"
-            class="h-10 cursor-pointer rounded border-r-4 border-r-transparent px-2 outline outline-1 outline-offset-1 outline-gray-300 hover:shadow-sm hover:outline-gray-500 focus:shadow-sm focus:outline-indigo-400"
+            class="h-10 cursor-pointer rounded border-r-4 border-r-transparent px-2 outline outline-1 outline-gray-300 hover:shadow-md hover:outline-gray-500 focus:shadow-sm focus:outline-indigo-400"
           ></select>
         </section>
 
         <section class="flex flex-col">
-          <label
-            for="data-size"
-            class="cursor-pointer pb-2 text-lg font-semibold"
+          <label for="data-size" class="cursor-pointer pb-2 font-medium"
             >Size</label
           >
 
@@ -57,7 +53,7 @@
           <button
             type="button"
             id="sort-button"
-            class="h-9 cursor-pointer rounded bg-emerald-500 px-5 font-semibold text-white transition-colors hover:bg-emerald-500/80 active:bg-emerald-600/90"
+            class="h-9 cursor-pointer rounded-full bg-emerald-500 px-5 font-semibold text-white transition-colors hover:bg-emerald-500/80 active:bg-emerald-600/90"
           >
             Sort
           </button>
@@ -65,15 +61,15 @@
       </main>
     </aside>
 
-    <main class="mx-auto max-w-max py-8">
-      <aside class="flex gap-4">
+    <main class="mx-auto flex flex-col gap-4">
+      <aside class="flex h-6 gap-4">
         <span>Size: <span id="size"></span></span>
         <span>Ops: <span id="ops"></span></span>
       </aside>
 
       <canvas
         id="canvas"
-        class="my-4 rounded-xl border bg-white p-4 text-blue-500 shadow-sm dark:bg-slate-900 dark:text-blue-400"
+        class="rounded-xl border bg-white p-4 text-blue-500 shadow-sm dark:bg-slate-900 dark:text-blue-400"
         height="500"
         width="1000"
       ></canvas>

@@ -16,6 +16,7 @@ const algorithmSelect = document.querySelector(
 
 const canvas = new Canvas(canvasElem);
 const drawQueue = new DrawQueue();
+let isSorting = false;
 
 const algorithms: Map<string, Sort> = new Map();
 algorithms.set("bubble", new BubbleSort());
@@ -32,15 +33,18 @@ algorithms.forEach((_, k) => {
 
 algorithmSelect.addEventListener("change", () => {
   algo = algorithms.get(algorithmSelect.value)!;
+
+  if (!isSorting) {
+    State.resetStats();
+    canvas.drawData(State.data);
+  }
 });
 
 canvas.drawData(State.data);
 State.renderStats();
 
-let sorting = false;
-
 sortButton?.addEventListener("click", () => {
-  if (sorting) {
+  if (isSorting) {
     return;
   }
 
@@ -49,11 +53,11 @@ sortButton?.addEventListener("click", () => {
     drawQueue.append(event);
   });
 
-  sorting = true;
+  isSorting = true;
   const sortedData = algo.sort(State.data);
   console.log(sortedData);
   canvas.updateCanvas(drawQueue).then(() => {
-    sorting = false;
+    isSorting = false;
   });
 });
 
