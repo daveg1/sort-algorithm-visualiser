@@ -3,6 +3,9 @@ interface IterableItem {
   done: boolean;
 }
 
+/**
+ * An iterable queue of objects to draw on the canvas
+ */
 export class DrawQueue {
   constructor(private queue: number[][] = []) {}
 
