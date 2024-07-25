@@ -1,24 +1,20 @@
 import { pause } from "../utils/pause";
-import { type DrawQueue } from "./DrawQueue";
+import { DrawQueue } from "./DrawQueue";
 import { State } from "./State";
 
 /**
  * Service class to handle rendering of the canvas
  */
-export class Canvas {
-  #canvas: HTMLCanvasElement;
-  #ctx: CanvasRenderingContext2D;
-  #RENDER_DELAY = 10;
-
-  constructor(canvas: HTMLCanvasElement) {
-    this.#canvas = canvas;
-    this.#ctx = canvas.getContext("2d")!;
-  }
+export class CanvasService {
+  static #canvas = document.querySelector<HTMLCanvasElement>("#canvas")!;
+  static #ctx = this.#canvas.getContext("2d")!;
+  static #drawQueue = new DrawQueue();
+  static #RENDER_DELAY = 10;
 
   /**
    * Clears the screen before each render
    */
-  clear() {
+  static clear() {
     this.#ctx.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
   }
 
@@ -26,7 +22,7 @@ export class Canvas {
    * Accepts an array of data points and renders them as bars on the canvas
    * @param data
    */
-  drawData(data: number[]) {
+  static drawData(data: number[]) {
     this.clear();
     this.#ctx.fillStyle = window.getComputedStyle(this.#canvas).color ?? "red"; // TODO: colour the "moving" value as red
 
@@ -41,8 +37,11 @@ export class Canvas {
     }
   }
 
-  async updateCanvas(drawQueue: DrawQueue) {
-    for (const state of drawQueue) {
+  /**
+   * what does this do?
+   */
+  static async updateCanvas() {
+    for (const state of this.#drawQueue) {
       console.debug("drawing");
       this.drawData(state);
       State.incrementOpsCount();
@@ -51,5 +50,9 @@ export class Canvas {
     }
     console.log("done");
     this.drawData(State.data);
+  }
+
+  static appendToDrawQueue(array: number[]) {
+    this.#drawQueue.append(array);
   }
 }
